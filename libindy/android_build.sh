@@ -44,9 +44,9 @@ elif [ "$1" == "armv7" ]; then
     popd 
     popd 
     export ANDROID_PREBUILT_BINARIES=/tmp/prebuilt_deps/android/deps/armv7
-    export SODIUM_LIB_DIR=${ANDROID_PREBUILT_BINARIES}/libsodium/1.0.16/lib
-    export LIBZMQ_PREFIX=${ANDROID_PREBUILT_BINARIES}/libzmq/4.2.4
-    export OPENSSL_DIR=${ANDROID_PREBUILT_BINARIES}/openssl/1.1.0c
+    export SODIUM_LIB_DIR=${ANDROID_PREBUILT_BINARIES}/libsodium_1.0.16/lib
+    export LIBZMQ_PREFIX=${ANDROID_PREBUILT_BINARIES}/libzmq_4.2.4
+    export OPENSSL_DIR=${ANDROID_PREBUILT_BINARIES}/openssl_1.1.0c
     # export ZMQPW_DIR=/Users/abdussami/Work/libs/libzmq-android-bins
     export AR=${NDK_TOOLCHAIN_DIR}/arm/bin/arm-linux-androideabi-ar
     export CC=${NDK_TOOLCHAIN_DIR}/arm/bin/arm-linux-androideabi-clang
