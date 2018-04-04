@@ -30,10 +30,10 @@ elif [ "$1" == "armv7" ]; then
     echo "Building for armv7-linux-androideabi"
     #Download prebuilt deps
     # if [ -f indy-sdk-prebuilt-deps.zip ]; then
-        # tar indy-sdk-prebuilt-deps.zip
-    # else 
-        # curl -L -o indy-sdk-prebuilt-deps.zip https://drive.google.com/uc?id=1tEqN8z6B6N8AOQgAb8g-Vj7DmyvRGTc6
-        # tar indy-sdk-prebuilt-deps.zip
+    # tar indy-sdk-prebuilt-deps.zip
+    # else
+    # curl -L -o indy-sdk-prebuilt-deps.zip https://drive.google.com/uc?id=1tEqN8z6B6N8AOQgAb8g-Vj7DmyvRGTc6
+    # tar indy-sdk-prebuilt-deps.zip
     # fi
     pushd /tmp
     unzip /tmp/prebuilt_deps.zip
@@ -41,8 +41,8 @@ elif [ "$1" == "armv7" ]; then
     unzip libsodium_1.0.16.zip
     unzip libzmq_4.2.4.zip
     unzip openssl_1.1.0c.zip
-    popd 
-    popd 
+    popd
+    popd
     export ANDROID_PREBUILT_BINARIES=/tmp/prebuilt_deps/android/deps/armv7
     export SODIUM_LIB_DIR=${ANDROID_PREBUILT_BINARIES}/libsodium_1.0.16/lib
     export LIBZMQ_PREFIX=${ANDROID_PREBUILT_BINARIES}/libzmq_4.2.4
