@@ -11,4 +11,6 @@ ENV SODIUM_LIB_DIR=/tmp/prebuilt_deps/android/deps/armv7/libsodium_1.0.16/lib \
     CARGO_INCREMENTAL=1 \
     RUST_LOG=indy=trace \
     RUST_TEST_THREADS=1 \
-    RUST_BACKTRACE=1
+    RUST_BACKTRACE=1 \
+    AR=arm-linux-androideabi-ar \
+    CC=arm-linux-androideabi-gcc
