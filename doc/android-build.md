@@ -1,6 +1,6 @@
 #Build LibIndy for Android
 
-## On Linux(Ubuntu 16.04)
+## On Linux(Ubuntu 16.04) for Armv7 architecture
 
 
 ```
