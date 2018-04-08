@@ -37,21 +37,21 @@ if [ "$1" == "aarm64" ]; then
 elif [ "$1" == "armv7" ]; then
     echo "Building for armv7-linux-androideabi"
     export ANDROID_PREBUILT_BINARIES=/tmp/prebuilt_deps_arm
-    # #cleanup
-    # rm -rf ${ANDROID_PREBUILT_BINARIES}
+    #cleanup
+    rm -rf ${ANDROID_PREBUILT_BINARIES}
 
-    # #Download prebuilt deps
-    # mkdir ${ANDROID_PREBUILT_BINARIES}
-    # pushd ${ANDROID_PREBUILT_BINARIES}
-    # curl -L -o libsodium_1.0.16.zip https://repo.sovrin.org/test/sdk-prebuilt-deps/android/deps/armv7/libsodium_1.0.16.zip
-    # curl -L -o libzmq_4.2.4.zip https://repo.sovrin.org/test/sdk-prebuilt-deps/android/deps/armv7/libzmq_4.2.4.zip
-    # curl -L -o openssl_1.1.0c.zip https://repo.sovrin.org/test/sdk-prebuilt-deps/android/deps/armv7/openssl_1.1.0c.zip
+    #Download prebuilt deps
+    mkdir ${ANDROID_PREBUILT_BINARIES}
+    pushd ${ANDROID_PREBUILT_BINARIES}
+    curl -L -o libsodium_1.0.16.zip https://repo.sovrin.org/test/sdk-prebuilt-deps/android/deps/armv7/libsodium_1.0.16.zip
+    curl -L -o libzmq_4.2.4.zip https://repo.sovrin.org/test/sdk-prebuilt-deps/android/deps/armv7/libzmq_4.2.4.zip
+    curl -L -o openssl_1.1.0c.zip https://repo.sovrin.org/test/sdk-prebuilt-deps/android/deps/armv7/openssl_1.1.0c.zip
 
-    # #extract deps
-    # unzip libsodium_1.0.16.zip
-    # unzip libzmq_4.2.4.zip
-    # unzip openssl_1.1.0c.zip
-    # popd
+    #extract deps
+    unzip libsodium_1.0.16.zip
+    unzip libzmq_4.2.4.zip
+    unzip openssl_1.1.0c.zip
+    popd
     
 
     #setup paths for deps
