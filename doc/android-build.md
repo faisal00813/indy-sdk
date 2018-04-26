@@ -10,7 +10,16 @@ Target = The system on which the build binary will actually work. (like android 
 ## Setting up Toolchains
 ### Via Script
 - make sure you have rust installed via rustup
-- make sure python is installed
+- run 
+    ```
+    sudo apt-get update && \
+    sudo apt-get install -y wget \
+        unzip \
+        curl \
+        python \
+        gcc \
+        pkg-config
+    ```
 - run `sh install_toolchains.sh`
 
 ### Manual
