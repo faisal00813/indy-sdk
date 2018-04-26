@@ -44,7 +44,7 @@ popd
 
 #setup paths for deps
 export SODIUM_LIB_DIR=${ANDROID_PREBUILT_BINARIES}/$LIBSODIUM/lib
-export LIBZMQ_PREFIX=${ANDROID_PREBUILT_BINARIES}/libzmq_4.3.2 #TODO change 4.3.2 to 4.2.3 after uploading the fixed zip to server
+export LIBZMQ_PREFIX=${ANDROID_PREBUILT_BINARIES}/$LIBZMQ 
 export OPENSSL_DIR=${ANDROID_PREBUILT_BINARIES}/$OPENSSL
 
 if [ "$1" == "aarm64" ]; then
