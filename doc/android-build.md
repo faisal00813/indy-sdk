@@ -81,4 +81,11 @@ sudo apt-get install -y wget \
 - Make sure you have setup the toolchains for Linux host
 - run `sh android-build.sh armv7`
 
+## Notes:
+Make sure the Android app which is going to use lib-indy has permissions to write to external storage. 
+
+Add following line to AndroidManifest.xml
+
+`<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>`
+
 
