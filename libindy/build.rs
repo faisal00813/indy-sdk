@@ -43,10 +43,6 @@ fn main() {
 				Ok(val) => val,
 				Err(..) => panic!("Missing required environment variable SODIUM_LIB_DIR")
 			};
-            let z = match env::var("Z_DIR") {
-				Ok(val) => val,
-				Err(..) => panic!("Missing required environment variable Z_DIR")
-			};
 
 			let zmq = match env::var("LIBZMQ_LIB_DIR") {
 				Ok(val) => val,
@@ -61,9 +57,6 @@ fn main() {
 			println!("cargo:rustc-link-lib=static=ssl");
 			println!("cargo:rustc-link-search=native={}", sodium);
 			println!("cargo:rustc-link-lib=static=sodium");
-            println!("cargo:rustc-link-lib=static=z");
-            println!("cargo:rustc-link-search={}/lib", z);
-            println!("cargo:include={}/include", z);
 			println!("cargo:rustc-link-search=native={}", zmq);
 			println!("cargo:rustc-link-lib=static=zmq");
 		}
