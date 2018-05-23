@@ -1,12 +1,14 @@
 extern crate env_logger;
 extern crate log_panics;
 extern crate log;
+#[cfg(target_os = "android")]
 extern crate android_logger;
 
 use self::env_logger::LogBuilder;
 use self::log::{Record, LevelFilter, Level};
 use std::env;
 use std::sync::{Once, ONCE_INIT};
+#[cfg(target_os = "android")]
 use self::android_logger::Filter;
 
 pub struct LoggerUtils {}
@@ -21,6 +23,7 @@ impl LoggerUtils {
             log_panics::init(); //Logging of panics is essential for android. As android does not log to stdout for native code
             if cfg!(target_os = "android") {
                 //Set logging to off when deploying production android app.
+                #[cfg(target_os = "android")]
                 android_logger::init_once(
                     Filter::default().with_min_level(log::Level::Trace)
                 );
