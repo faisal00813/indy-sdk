@@ -16,7 +16,7 @@ impl EnvironmentUtils {
 
         if cfg!(target_os = "android"){
             let android_dir = env::var("EXTERNAL_STORAGE").unwrap() + "/.indy_client";
-            fs::create_dir_all(android_dir)?;
+            fs::create_dir_all(android_dir);
             path = PathBuf::from(android_dir);
         }
         trace!("indy homedir >> {:?}",path);
