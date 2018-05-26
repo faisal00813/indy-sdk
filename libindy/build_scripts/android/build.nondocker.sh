@@ -72,7 +72,7 @@ if [ "$(uname)" == "Darwin" ]; then
     export TOOLCHAIN_PREFIX=${WORKDIR}/toolchains/darwin
     mkdir -p ${TOOLCHAIN_PREFIX}
     pushd $TOOLCHAIN_PREFIX
-    if [ ! -f "android-ndk-r16b-darwin-x86_64.zip" ] ; then
+    if [ ! -d "android-ndk-r16b" ] ; then
         echo "Downloading android-ndk-r16b-darwin-x86_64.zip"
         wget https://dl.google.com/android/repository/android-ndk-r16b-darwin-x86_64.zip
         unzip -qq android-ndk-r16b-darwin-x86_64.zip
@@ -86,7 +86,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     export TOOLCHAIN_PREFIX=${WORKDIR}/toolchains/linux
     mkdir ${TOOLCHAIN_PREFIX}
     pushd $TOOLCHAIN_PREFIX
-    if [ ! -f "android-ndk-r16b-linux-x86_64.zip" ] ; then
+    if [ ! -d "android-ndk-r16b" ] ; then
         echo "Downloading android-ndk-r16b-linux-x86_64.zip"
         wget -q https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip
         unzip -qq android-ndk-r16b-linux-x86_64.zip
