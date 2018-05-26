@@ -66,19 +66,6 @@ if [ -z "${LIBZMQ_DIR}" ] ; then
     fi
 fi
 
-if [ -z "${LIBINDY_DIR}" ] ; then
-    LIBINDY_DIR="libindy_${TARGET_ARCH}"
-    if [ -d "${LIBINDY_DIR}" ] ; then
-        echo "Found ${LIBINDY_DIR}"
-    elif [ -z "$7" ] ; then
-        echo STDERR "Missing LIBINDY_DIR argument and environment variable"
-        echo STDERR "e.g. set LIBINDY_DIR=<path> for environment or libindy_${TARGET_ARCH}"
-        exit 1
-    else
-        LIBINDY_DIR=$7
-    fi
-fi
-
 
 if [ "$(uname)" == "Darwin" ]; then
     echo "Downloading NDK for OSX"
@@ -87,7 +74,7 @@ if [ "$(uname)" == "Darwin" ]; then
     pushd $TOOLCHAIN_PREFIX
     if [ ! -f "android-ndk-r16b-darwin-x86_64.zip" ] ; then
         echo "Downloading android-ndk-r16b-darwin-x86_64.zip"
-        wget -q https://dl.google.com/android/repository/android-ndk-r16b-darwin-x86_64.zip
+        wget https://dl.google.com/android/repository/android-ndk-r16b-darwin-x86_64.zip
         unzip -qq android-ndk-r16b-darwin-x86_64.zip
     else
         echo "Skipping download android-ndk-r16b-linux-x86_64.zip"
@@ -97,7 +84,7 @@ if [ "$(uname)" == "Darwin" ]; then
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     echo "Downloading NDK for Linux"
     export TOOLCHAIN_PREFIX=${WORKDIR}/toolchains/linux
-    mkdir -p ${TOOLCHAIN_PREFIX}
+    mkdir ${TOOLCHAIN_PREFIX}
     pushd $TOOLCHAIN_PREFIX
     if [ ! -f "android-ndk-r16b-linux-x86_64.zip" ] ; then
         echo "Downloading android-ndk-r16b-linux-x86_64.zip"
@@ -152,6 +139,6 @@ pushd $LIBINDY_SRC
 export OPENSSL_STATIC=1
 cargo build --release --target=${CROSS_COMPILE}
 popd
-$CC -v -shared -o ${WORKDIR}/libvcx.so -Wl,--whole-archive ${LIBINDY_SRC}/target/${CROSS_COMPILE}/release/libvcx.a ${TOOLCHAIN_DIR}/sysroot/usr/lib/libz.a ${TOOLCHAIN_DIR}/sysroot/usr/lib/libm.a ${TOOLCHAIN_DIR}/sysroot/usr/lib/liblog.so ${LIBINDY_DIR}/libindy.a ${OPENSSL_DIR}/lib/libssl.a ${OPENSSL_DIR}/lib/libcrypto.a ${SODIUM_LIB_DIR}/libsodium.a ${LIBZMQ_LIB_DIR}/libzmq.a ${TOOLCHAIN_DIR}/${CROSS_COMPILE}/lib/libstdc++.a -Wl,--no-whole-archive -z muldefs
-cp "${LIBINDY_SRC}/target/${CROSS_COMPILE}/release/libvcx.a" ${WORKDIR}/
+$CC -v -shared -o ${WORKDIR}/libindy.so -Wl,--whole-archive ${LIBINDY_SRC}/target/${CROSS_COMPILE}/release/libindy.a ${TOOLCHAIN_DIR}/sysroot/usr/lib/libz.a ${TOOLCHAIN_DIR}/sysroot/usr/lib/libm.a ${TOOLCHAIN_DIR}/sysroot/usr/lib/liblog.so ${OPENSSL_DIR}/lib/libssl.a ${OPENSSL_DIR}/lib/libcrypto.a ${SODIUM_LIB_DIR}/libsodium.a ${LIBZMQ_LIB_DIR}/libzmq.a ${TOOLCHAIN_DIR}/${CROSS_COMPILE}/lib/libstdc++.a -Wl,--no-whole-archive -z muldefs
+cp "${LIBINDY_SRC}/target/${CROSS_COMPILE}/release/libindy.a" ${WORKDIR}/
 
