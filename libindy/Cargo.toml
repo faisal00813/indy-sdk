@@ -44,7 +44,7 @@ libc = "0.2.21"
 log = "0.4.1"
 openssl = { version = "=0.9.24", optional = true }
 rand = "0.3"
-rusqlcipher = { version = "0.14.6", features=["bundled"] }
+rusqlcipher = { version = "0.14,<0.14.7", features=["bundled"] }
 rust-base58 = {version = "0.0.4", optional = true}
 base64 = "0.6.0"
 serde = "1.0"
@@ -66,3 +66,8 @@ features = ["v4"]
 
 [target.'cfg(target_os = "android")'.dependencies]
 android_logger = "0.5"
+
+[profile.release]
+debug = true
+panic = 'unwind'
+incremental = false
