@@ -137,8 +137,12 @@ rustup target add ${CROSS_COMPILE}
 
 pushd $LIBINDY_SRC
 export OPENSSL_STATIC=1
-cargo build --release --target=${CROSS_COMPILE}
+#cargo build --release --target=${CROSS_COMPILE}
 popd
-$CC -v -shared -o ${WORKDIR}/libindy.so -Wl,--whole-archive ${LIBINDY_SRC}/target/${CROSS_COMPILE}/release/libindy.a ${TOOLCHAIN_DIR}/sysroot/usr/lib/libz.a ${TOOLCHAIN_DIR}/sysroot/usr/lib/libm.a ${TOOLCHAIN_DIR}/sysroot/usr/lib/liblog.so ${OPENSSL_DIR}/lib/libssl.a ${OPENSSL_DIR}/lib/libcrypto.a ${SODIUM_LIB_DIR}/libsodium.a ${LIBZMQ_LIB_DIR}/libzmq.a ${TOOLCHAIN_DIR}/${CROSS_COMPILE}/lib/libstdc++.a -Wl,--no-whole-archive -z muldefs
-cp "${LIBINDY_SRC}/target/${CROSS_COMPILE}/release/libindy.a" ${WORKDIR}/
+
+
+LIBINDY_BUILDS=${WORKDIR}/libindy_${TARGET_ARCH}
+mkdir -p ${LIBINDY_BUILDS}
+$CC -v -shared -o ${LIBINDY_BUILDS}/libindy.so -Wl,--whole-archive ${LIBINDY_SRC}/target/${CROSS_COMPILE}/release/libindy.a ${TOOLCHAIN_DIR}/sysroot/usr/lib/libz.so ${TOOLCHAIN_DIR}/sysroot/usr/lib/libm.a ${TOOLCHAIN_DIR}/sysroot/usr/lib/liblog.so ${OPENSSL_DIR}/lib/libssl.a ${OPENSSL_DIR}/lib/libcrypto.a ${SODIUM_LIB_DIR}/libsodium.a ${LIBZMQ_LIB_DIR}/libzmq.a ${TOOLCHAIN_DIR}/${CROSS_COMPILE}/lib/libstdc++.a -Wl,--no-whole-archive -z muldefs
+cp "${LIBINDY_SRC}/target/${CROSS_COMPILE}/release/libindy.a" ${LIBINDY_BUILDS}/
 
