@@ -13,7 +13,7 @@ export RESET=`tput sgr0`
 
 set -e
 set -o pipefail
-WORKDIR=${PWD}
+WORKDIR=${PWD}/..
 LIBINDY_WORKDIR=${WORKDIR}
 CI_DIR="${LIBINDY_WORKDIR}/ci"
 export ANDROID_BUILD_FOLDER="/tmp/android_build"

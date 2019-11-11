@@ -14,6 +14,10 @@ trap 'error_report $LINENO' ERR
 
 echo -e "${onyellow}Installing libindy...$endcolor"
 
+WORKDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+cd ${WORKDIR}/..
+
 function brew_install {
     if brew ls --versions $1 >/dev/null; then
         if [[ $(brew outdated $1) ]]; then

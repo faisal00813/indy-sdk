@@ -3,7 +3,6 @@ pub mod crypto;
 pub mod ledger;
 pub mod pairwise;
 pub mod pool;
-pub mod cache;
 
 use indy_api_types::validation::Validatable;
 
